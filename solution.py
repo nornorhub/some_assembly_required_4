@@ -1,3 +1,5 @@
+# Theis code is diffeerent from Mr. Carlisle's because his code had some errors and I fixed them. I also added some comments to make thing a little bit clearer.
+
 #!/usr/bin/python3
 import string
 import itertools
