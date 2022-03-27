@@ -2,7 +2,7 @@
 import string
 import itertools
 
-from wasmtime import Store, Module, Instance, Trap, MemoryType, Memory, Limits, WasmtimeError
+from wasmtime import Store, Module, Instance
 
 store = Store()
 module = Module.from_file(store.engine, "assembly4.wat")
@@ -35,7 +35,9 @@ def count_match():
 flag="picoCTF{0123456789abcdef0123456789abcdef}"
 flag_chars=string.ascii_lowercase+"_"+string.digits+"}\x00"
 flag_so_far=""
-for i in range(24):
+# flag has 33 characters, ignoring "picoCTF{", so 16 pairs and 1 leftover (17 pairs)
+for i in range(17):
+   # repeat=2 because we want to try all possible pairs
    for j in itertools.product(flag_chars,repeat=2):
       init_flag(j)
       check_flag(store)
